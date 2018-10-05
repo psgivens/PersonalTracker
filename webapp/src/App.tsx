@@ -7,11 +7,11 @@ import logo from './logo.svg'
 
 import Welcome from './components/Welcome'
 
-import Second from './components/Second'
-
 import MainMenu from './app/MainMenu'
 
 import './css/sample.css'
+
+import PomodoroManagement from './components/PomodoroManagement';
 
 // class App extends React.Component {
 //   public render() {
@@ -42,8 +42,8 @@ const App: React.SFC<BasicProps> = () =>
             <Route path="/ListDemo" component={ ListDemo } />
             <Route path="/PomodoroDemo" component={ PomodoroDemo } />            
             <Route path="/ThirdDemo" component={ ThirdDemo } />*/}
-            <Route path="/second" component={ Second } />
-            <Route path="/" component={ Welcome } />           
+            <Route path="/Pomodoros" component={ PomodoroManagement } />
+            <Route path="/" component={ Welcome } />          
             
           </Switch>
         </>
