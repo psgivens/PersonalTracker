@@ -3,8 +3,14 @@ import * as React from 'react';
 
 import { PomodoroIdb } from '../data/PomodoroData'
 
-type BasicProps = {} & {}
+import * as container from './pomodoroManagement/PomodoroManagementConnect'
 
+import { connect } from 'react-redux';
+
+type ThisProps = container.StateProps & container.ConnectedDispatch & container.AttributeProps
+
+
+/*************** TODO Remove *******************/
 const SecondStyle = {
   backgroundColor: "green"
 }
@@ -19,8 +25,12 @@ const poms:PomodoroIdb[] = [
     version: 1  
   }
 ]
+/*************** end Remove *******************/
 
-const PomodoroManagement: React.SFC<BasicProps> = ( ) => 
+// TODO: Add error-boundaries
+// https://reactjs.org/docs/error-boundaries.html
+
+const PomodoroManagementComp: React.SFC<ThisProps> = ( {pomodoros}:ThisProps ) => 
   (<div className="container-fluid" >
     <section className="hero is-primary">
       <div className="hero-body" style={SecondStyle}>
@@ -49,9 +59,19 @@ const PomodoroManagement: React.SFC<BasicProps> = ( ) =>
             <td>{(new Date(pomodoro.startTime)).toLocaleString()}</td>
           </tr>)}
 
+        {pomodoros.map((pomodoro:PomodoroIdb)=>
+          <tr key={pomodoro.id}>
+            <td>{pomodoro.planned}</td>
+            <td>{pomodoro.actual}</td>
+            <td>{(new Date(pomodoro.startTime)).toLocaleString()}</td>
+          </tr>)}
+
         </tbody>
       </table>
     </section>
   </div>)
 
-export default PomodoroManagement
+// export default PomodoroManagement
+
+
+export default connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (PomodoroManagementComp)
