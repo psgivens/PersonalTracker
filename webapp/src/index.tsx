@@ -7,18 +7,28 @@ import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
+import { applyMiddleware } from 'redux'
+
+import { PomodoroManagementSaga } from './actions/PomodoroManagementSaga'
+
+import createSagaMiddleware from 'redux-saga'
 
 import * as state from './reducers'
 
 import { reducers } from './reducers'
 
-// import { DatabaseWorker } from './workers/DatabaseWorker'
+import { DatabaseWorker } from './workers/DatabaseWorker'
+
+import createPomodoroSaga from './actions/PomodoroSaga'
 
 // import { DatabaseWorkerEvent } from './data/PomodoroData'
 
-const store: ReduxStore<state.All> = createStore(reducers, state.initialState)
+const sagaMiddleware = createSagaMiddleware()
 
-// const databaseWorker = new DatabaseWorker(store.dispatch)
+const store: ReduxStore<state.All> = createStore(reducers, state.initialState, applyMiddleware(sagaMiddleware))
+
+
+const databaseWorker = new DatabaseWorker(store.dispatch)
 // databaseWorker.post({ 
 //   item: {
 //     actual: "Actually did the thing",
@@ -35,6 +45,10 @@ const store: ReduxStore<state.All> = createStore(reducers, state.initialState)
 //     console.log("index.tsx call to postToDb: " + JSON.stringify(event))
 //   })
 
+
+const pomodoroManagementSaga = new PomodoroManagementSaga(databaseWorker)
+sagaMiddleware.run(() => pomodoroManagementSaga.saga())
+sagaMiddleware.run(createPomodoroSaga(store.dispatch))
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,

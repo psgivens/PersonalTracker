@@ -30,8 +30,24 @@ const poms:PomodoroIdb[] = [
 // TODO: Add error-boundaries
 // https://reactjs.org/docs/error-boundaries.html
 
-const PomodoroManagementComp: React.SFC<ThisProps> = ( {pomodoros}:ThisProps ) => 
-  (<div className="container-fluid" >
+type ComponentState = {} & {
+}
+
+class PomodoroManagementComp extends React.Component<ThisProps, ComponentState> {
+// const PomodoroManagementComp: React.SFC<ThisProps> = ( {pomodoros}:ThisProps ) => 
+constructor (props:ThisProps) {
+  super (props)
+  this.state = {
+  }
+  // this.onActualChange = this.onActualChange.bind(this)
+  // this.onPlannedChange = this.onPlannedChange.bind(this)
+  // this.onClick = this.onClick.bind(this)
+
+  this.props.loadItems!()
+}
+
+  public render () {
+  return (<div className="container-fluid" >
     <section className="hero is-primary">
       <div className="hero-body" style={SecondStyle}>
         <p className="title" style={SecondStyle}>
@@ -59,7 +75,7 @@ const PomodoroManagementComp: React.SFC<ThisProps> = ( {pomodoros}:ThisProps ) =
             <td>{(new Date(pomodoro.startTime)).toLocaleString()}</td>
           </tr>)}
 
-        {pomodoros.map((pomodoro:PomodoroIdb)=>
+        {this.props.pomodoros.map((pomodoro:PomodoroIdb)=>
           <tr key={pomodoro.id}>
             <td>{pomodoro.planned}</td>
             <td>{pomodoro.actual}</td>
@@ -70,8 +86,7 @@ const PomodoroManagementComp: React.SFC<ThisProps> = ( {pomodoros}:ThisProps ) =
       </table>
     </section>
   </div>)
-
-// export default PomodoroManagement
-
+  }
+}
 
 export default connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (PomodoroManagementComp)
