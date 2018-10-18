@@ -1,23 +1,10 @@
-// import { combineReducers } from 'redux'
-import reduceReducers from 'reduce-reducers';
-import { PomodoroIdb } from '../data/PomodoroData'
-
-import { PomodoroManagementEvent } from '../actions/PomodoroManagementSaga'
-
-import { PomodoroEvent } from '../actions/PomodoroSaga'
+import { combineReducers } from 'redux';
+import { createInitialState, crudlReducer, CrudlState } from 'src/jscommon/reducers/CrudlReducers';
+import { PomodoroEvent } from '../actions/PomodoroSaga';
 
 export const initialState:All = { 
   pomodoro: { type: "NOT_RUNNING" },
-  pomodoros: [
-    {
-      actual: "Initialized the database",
-      id: 1,
-      planned: "Initializing teh database",
-      startTime: 1,
-      userId: "1",    
-      version: 1  
-    }
-  ]
+  pomodoros: createInitialState()
 }
 
 export type PomodoroTimerState = {
@@ -36,33 +23,29 @@ export type PomodoroTimerState = {
   export const initialPomodoroTimerState:PomodoroTimerState = {
     type: "NOT_RUNNING"
   }
-  
-//   type PomodoroTimerStates = {} & {
-//     [name:string]: PomodoroTimerState
-//   }
 
   export type All = {} & {
-    pomodoros: PomodoroIdb[],
+    pomodoros: CrudlState,
     pomodoro: PomodoroTimerState
   }  
 
-function pomodoroReducers(state:All, action: PomodoroEvent): All {
+function pomodoroReducers(state:PomodoroTimerState = { type: "NOT_RUNNING" }, action: PomodoroEvent): PomodoroTimerState {
     switch(action.type) {
       case "POMODORO_TIMER_STARTED":
-        return { ...state, pomodoro: {
+        return {
           remaining: 25 * 60,               
           timerId: action.timerId,
           type: "RUNNING"      
-        } }
+        } 
       case "POMODORO_TIMER_STOPPED":
-        return { ...state, pomodoro: {
+        return {
           type: "NOT_RUNNING"      
-        } }
+        } 
       case "POMODORO_TICKED":
-        const prev = state.pomodoro
+        const prev = state
         if (prev.type === "RUNNING") {
-          return { ...state, pomodoro: {
-            ...prev, remaining: prev.remaining-1 }}
+          return {
+            ...prev, remaining: prev.remaining-1 }
         }
         else { return state }
       default:
@@ -70,16 +53,9 @@ function pomodoroReducers(state:All, action: PomodoroEvent): All {
     }
   }
   
-  
-  function pomodoroManagmentReducers(state:All, action: PomodoroManagementEvent): All {
-    switch(action.type) {
-      case "POMODORO_ITEMSLOADED":
-        return { ...state, pomodoros: action.items }
-      case "POMODORO_ITEMADDED":
-        return { ...state, pomodoros:[...state.pomodoros, action.item]}
-      default:
-        return { ...state, pomodoros: state.pomodoros ? state.pomodoros : [] }
-    }
-  }
-  
-  export const reducers = reduceReducers( pomodoroManagmentReducers, pomodoroReducers)
+  export const reducers = combineReducers( {
+    pomodoro: pomodoroReducers,
+    pomodoros: crudlReducer("Pomodoros")
+  })
+
+

@@ -1,54 +1,34 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
-import { createStore, Store as ReduxStore } from 'redux'
-
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore, Store as ReduxStore } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { CrudlSaga } from 'src/jscommon/actions/CrudlSaga';
+import { CrudlDatabaseWorker } from 'src/jscommon/workers/CrudlDatabaseWorker';
+// import { PomodoroManagementSaga } from './actions/PomodoroManagementSaga';
+import createPomodoroSaga from './actions/PomodoroSaga';
 import App from './App';
 import './index.css';
+import * as state from './reducers';
+import { reducers } from './reducers';
 import registerServiceWorker from './registerServiceWorker';
-
-import { applyMiddleware } from 'redux'
-
-import { PomodoroManagementSaga } from './actions/PomodoroManagementSaga'
-
-import createSagaMiddleware from 'redux-saga'
-
-import * as state from './reducers'
-
-import { reducers } from './reducers'
-
-import { DatabaseWorker } from './workers/DatabaseWorker'
-
-import createPomodoroSaga from './actions/PomodoroSaga'
-
-// import { DatabaseWorkerEvent } from './data/PomodoroData'
+// import { DatabaseWorker } from './workers/DatabaseWorker';
 
 const sagaMiddleware = createSagaMiddleware()
 
 const store: ReduxStore<state.All> = createStore(reducers, state.initialState, applyMiddleware(sagaMiddleware))
 
+const crudlDatabaseWorker = new CrudlDatabaseWorker(store.dispatch)
 
-const databaseWorker = new DatabaseWorker(store.dispatch)
-// databaseWorker.post({ 
-//   item: {
-//     actual: "Actually did the thing",
-//     id: Math.floor(Math.random() * 1000000000),
-//     planned: "Doing the thing",
-//     startTime: Date.now(),
-//     userId: "psgivens",
-//     version: 0
-//   },
-//     type: "INSERT_ITEM",
-//   })
-//   .then((event:DatabaseWorkerEvent) =>{
-//     // tslint:disable-next-line:no-console
-//     console.log("index.tsx call to postToDb: " + JSON.stringify(event))
-//   })
-
-
-const pomodoroManagementSaga = new PomodoroManagementSaga(databaseWorker)
+const pomodoroManagementSaga = new CrudlSaga(crudlDatabaseWorker, "Pomodoros", "PomodoroManagement")
 sagaMiddleware.run(() => pomodoroManagementSaga.saga())
+
 sagaMiddleware.run(createPomodoroSaga(store.dispatch))
+
+// const databaseWorker = new DatabaseWorker(store.dispatch)
+// const pomodoroManagementSaga = new PomodoroManagementSaga(databaseWorker)
+// sagaMiddleware.run(() => pomodoroManagementSaga.saga())
+// sagaMiddleware.run(createPomodoroSaga(store.dispatch))
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,

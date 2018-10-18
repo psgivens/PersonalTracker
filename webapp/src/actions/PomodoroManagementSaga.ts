@@ -1,13 +1,8 @@
-// import { Dispatch } from 'redux'
 import { takeEvery } from 'redux-saga/effects'
 import { call, put } from 'redux-saga/effects'
-// import { api } from '../apis'
-
-import { DatabaseWorker } from '../workers/DatabaseWorker'
-
 import { DatabaseWorkerCommand, DatabaseWorkerEvent } from '../data/PomodoroData'
-
 import { PomodoroIdb } from '../data/PomodoroData'
+import { DatabaseWorker } from '../workers/DatabaseWorker'
 
 export type PomodoroManagementCommand = {
     type: "POMODORO_LOADITEMS"
