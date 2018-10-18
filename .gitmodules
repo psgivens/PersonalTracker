@@ -1,3 +1,6 @@
 [submodule "webapp/src/jscommon"]
 	path = webapp/src/jscommon
 	url = https://github.com/psgivens/jscommon
+[submodule "webapp/src/core"]
+	path = webapp/src/core
+	url = https://github.com/psgivens/PersonalTracker.Core

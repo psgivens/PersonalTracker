@@ -1,17 +1,12 @@
 import * as React from 'react'
-import './App.css'
-
 import { BrowserRouter as Router, Route, Switch   } from "react-router-dom"
-
+import MainMenu from './app/MainMenu'
+import PomodoroManagement from './core/components/PomodoroManagement';
+import Welcome from './core/components/Welcome'
 import logo from './logo.svg'
 
-import Welcome from './components/Welcome'
-
-import MainMenu from './app/MainMenu'
-
+import './App.css'
 import './css/sample.css'
-
-import PomodoroManagement from './components/PomodoroManagement';
 
 type BasicProps = {} & {}
 
