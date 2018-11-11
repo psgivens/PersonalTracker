@@ -22,6 +22,7 @@ const MainMenu: React.SFC<BasicProps> = () =>
             <Link className="navbar-item" to="/">Home</Link>
             <Link className="navbar-item" to="/Pomodoros">Pomodoros</Link>
             <Link className="navbar-item" to="/Ping">Ping</Link>
+            <Link className="navbar-item" to="/Login">Login</Link>
         </div>
         </div>
     </nav>)

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { BrowserRouter as Router, Route, Switch   } from "react-router-dom"
 import MainMenu from './app/MainMenu'
+import Login from './core/components/Login';
 import PomodoroManagement from './core/components/PomodoroManagement';
 import Welcome from './core/components/Welcome'
 import PingComponent from './jscommon/components/PingComponent';
@@ -20,6 +21,7 @@ const App: React.SFC<BasicProps> = () =>
             <Route path="/Home" component={ Welcome } />
             <Route path="/Pomodoros" component={ PomodoroManagement } />
             <Route path="/Ping" component={ PingComponent } />
+            <Route path="/Login" component={ Login } />
             <Route path="/" component={ Welcome } />          
             
           </Switch>
