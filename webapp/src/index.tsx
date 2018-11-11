@@ -10,6 +10,7 @@ import App from './App'
 import * as state from './core/reducers'
 import { reducers } from './core/reducers'
 import './index.css'
+import { PingSaga } from './jscommon/actions/PingSaga'
 import registerServiceWorker from './registerServiceWorker'
 
 const sagaMiddleware = createSagaMiddleware()
@@ -19,6 +20,8 @@ const crudlDatabaseWorker = new CrudlDatabaseWorker(store.dispatch)
 const pomodoroManagementSaga = new CrudlSaga(crudlDatabaseWorker, "Pomodoros", "PomodoroManagement")
 sagaMiddleware.run(() => pomodoroManagementSaga.saga())
 sagaMiddleware.run(createPomodoroSaga(store.dispatch))
+const pingSaga = new PingSaga()
+sagaMiddleware.run(() => pingSaga.saga())
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,
