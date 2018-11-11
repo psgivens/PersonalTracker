@@ -18,10 +18,6 @@ const App: React.SFC<BasicProps> = () =>
           <MainMenu />
           <Switch>
             <Route path="/Home" component={ Welcome } />
-            {/* <Route path="/CounterDemo" component={ CounterDemo } />
-            <Route path="/ListDemo" component={ ListDemo } />
-            <Route path="/PomodoroDemo" component={ PomodoroDemo } />            
-            <Route path="/ThirdDemo" component={ ThirdDemo } />*/}
             <Route path="/Pomodoros" component={ PomodoroManagement } />
             <Route path="/Ping" component={ PingComponent } />
             <Route path="/" component={ Welcome } />          
