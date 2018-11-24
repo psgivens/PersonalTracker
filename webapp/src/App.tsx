@@ -8,7 +8,9 @@ import PingComponent from './jscommon/components/PingComponent';
 import logo from './logo.svg'
 
 import './App.css'
+import ValuesComponent from './core/components/ValuesComponent';
 import './css/sample.css'
+import ProtectedRoute from './jscommon/controls/ProtectedRoute';
 
 type BasicProps = {} & {}
 
@@ -18,12 +20,12 @@ const App: React.SFC<BasicProps> = () =>
         <img src={logo} className="App-logo" alt="logo" />
           <MainMenu />
           <Switch>
+            <ProtectedRoute path="/Ping" component={ PingComponent } />
+            <ProtectedRoute path="/Values" component={ ValuesComponent } />
+            <ProtectedRoute path="/Pomodoros" component={ PomodoroManagement } />
             <Route path="/Home" component={ Welcome } />
-            <Route path="/Pomodoros" component={ PomodoroManagement } />
-            <Route path="/Ping" component={ PingComponent } />
             <Route path="/Login" component={ Login } />
-            <Route path="/" component={ Welcome } />          
-            
+            <Route path="/" component={ Welcome } />                      
           </Switch>
         </>
     </Router>)

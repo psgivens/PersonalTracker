@@ -7,6 +7,7 @@ import createPomodoroSaga from 'src/core/actions/PomodoroSaga'
 import { CrudlSaga } from 'src/jscommon/actions/CrudlSaga'
 import { CrudlDatabaseWorker } from 'src/jscommon/workers/CrudlDatabaseWorker'
 import App from './App'
+import { ValuesSaga } from './core/actions/ValuesSaga';
 import * as state from './core/reducers'
 import { reducers } from './core/reducers'
 import { AuthenticationSaga } from './jscommon/actions/AuthenticationSaga';
@@ -26,6 +27,8 @@ const pingSaga = new PingSaga()
 sagaMiddleware.run(() => pingSaga.saga())
 const authenticationSaga = new AuthenticationSaga()
 sagaMiddleware.run(() => authenticationSaga.saga())
+const valuesSaga = new ValuesSaga()
+sagaMiddleware.run(() => valuesSaga.saga())
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,
