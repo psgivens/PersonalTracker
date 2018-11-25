@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga'
 import createPomodoroSaga from 'src/core/actions/PomodoroSaga'
 import { CrudlSaga } from 'src/jscommon/actions/CrudlSaga'
 import { CrudlDatabaseWorker } from 'src/jscommon/workers/CrudlDatabaseWorker'
-import App from './App'
+import App from './app/App'
 import { ValuesSaga } from './core/actions/ValuesSaga';
 import * as state from './core/reducers'
 import { reducers } from './core/reducers'

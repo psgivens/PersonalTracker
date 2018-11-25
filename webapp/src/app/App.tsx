@@ -1,24 +1,21 @@
 import * as React from 'react'
 import { BrowserRouter as Router, Route, Switch   } from "react-router-dom"
-import MainMenu from './app/MainMenu'
-import Login from './core/components/Login';
-import PomodoroManagement from './core/components/PomodoroManagement';
-import Welcome from './core/components/Welcome'
-import PingComponent from './jscommon/components/PingComponent';
-import logo from './logo.svg'
+import Login from '../core/components/Login';
+import PomodoroManagement from '../core/components/PomodoroManagement';
+import ValuesComponent from '../core/components/ValuesComponent';
+import Welcome from '../core/components/Welcome'
+import PingComponent from '../jscommon/components/PingComponent';
+import ProtectedRoute from '../jscommon/controls/ProtectedRoute';
+
+import './css/sample.css'
 
 import './App.css'
-import ValuesComponent from './core/components/ValuesComponent';
-import './css/sample.css'
-import ProtectedRoute from './jscommon/controls/ProtectedRoute';
 
 type BasicProps = {} & {}
 
 const App: React.SFC<BasicProps> = () => 
     (<Router>
         <>
-        <img src={logo} className="App-logo" alt="logo" />
-          <MainMenu />
           <Switch>
             <ProtectedRoute path="/Ping" component={ PingComponent } />
             <ProtectedRoute path="/Values" component={ ValuesComponent } />

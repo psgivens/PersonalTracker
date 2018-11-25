@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import * as redux from 'redux';
 import * as state from 'src/core/reducers/index';
+import { AuthenticationCommand, AuthenticationCommands } from 'src/jscommon/actions/AuthenticationSaga';
 
 export type AttributeProps = {} & {    
 }
@@ -10,7 +11,7 @@ export type StateProps = {} & {
 }
   
 export type ConnectedDispatch = {} & {
-    getValues?:() => void
+    logout?:() => void
 }
 
 const mapStateToProps = (state1: state.All, ownProps: AttributeProps): StateProps => {
@@ -18,9 +19,9 @@ const mapStateToProps = (state1: state.All, ownProps: AttributeProps): StateProp
         isAuthenticated: state1.auth.isAuthenticated,
     } }
 
-const mapDispatchToProps = (dispatch: redux.Dispatch<any>): ConnectedDispatch => {
+const mapDispatchToProps = (dispatch: redux.Dispatch<AuthenticationCommand>): ConnectedDispatch => {
     return {
-        // getValues: () => dispatch(ValuesCommands.getValues())
+        logout: () => dispatch(AuthenticationCommands.logout())
     }
 }    
 
