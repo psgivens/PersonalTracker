@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { BrowserRouter as Router, Route, Switch   } from "react-router-dom"
+import WebappPingComponent from 'src/core/components/WebappPing';
 import Login from '../core/components/Login';
 import PomodoroManagement from '../core/components/PomodoroManagement';
 import ValuesComponent from '../core/components/ValuesComponent';
 import Welcome from '../core/components/Welcome'
-import PingComponent from '../jscommon/components/PingComponent';
+
 import ProtectedRoute from '../jscommon/controls/ProtectedRoute';
 
 import './css/sample.css'
@@ -17,7 +18,7 @@ const App: React.SFC<BasicProps> = () =>
     (<Router>
         <>
           <Switch>
-            <ProtectedRoute path="/Ping" component={ PingComponent } />
+            <ProtectedRoute path="/Ping" component={ WebappPingComponent } />
             <ProtectedRoute path="/Values" component={ ValuesComponent } />
             <ProtectedRoute path="/Pomodoros" component={ PomodoroManagement } />
             <Route path="/Home" component={ Welcome } />
