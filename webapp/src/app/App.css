@@ -46,3 +46,25 @@ aside.menu {
   width: 300px;
   height:100%;
 }
+
+#sidebar {
+  float: left;
+  width: 300px;
+  height: 100%;
+  background-color: #111211;
+}
+
+#nextbar {
+  overflow: scroll;
+}
+
+#root {
+  overflow: hidden;
+}
+
+.FullHeight {
+  height: 100%;
+}
+
+html,body,#root { height:100%; }
+

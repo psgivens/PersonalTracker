@@ -9,14 +9,17 @@ type ThisProps =
   & { children: any }
 
 const Authenticated: React.SFC<ThisProps> = ({ children, logout } : ThisProps ) => {
-  return (
-    <div className={'FancyBorder FancyBorder-red'}>
-
+  return (<>    
       <MainMenu />
-
-            {children}
-        </div>
-    );
+      <div className='FullHeight'>
+      <aside id="sidebar"> left-sidebar </aside>
+      <div id="nextbar" className='FullHeight' >
+      <div  className='FancyBorder FancyBorder-red'>        
+        {children}
+      </div>
+      </div>
+      </div>
+    </>);
   }
 
 export default container.connectContainer(Authenticated)
