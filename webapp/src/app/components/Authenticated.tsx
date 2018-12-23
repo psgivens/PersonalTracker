@@ -16,7 +16,7 @@ const Authenticated: React.SFC<ThisProps> = ({ children, logout } : ThisProps ) 
         <aside id="sidebar"> 
           <div>
           <p className="menu-label">
-            Services
+            Bootstrapping Services
           </p>
           <ul className="menu-list">
             <li><NavLink activeClassName="is-active" to="/Home">Home</NavLink></li>
@@ -24,10 +24,25 @@ const Authenticated: React.SFC<ThisProps> = ({ children, logout } : ThisProps ) 
             <li><NavLink activeClassName="is-active" to="/Ping">Ping</NavLink></li>
             <li><NavLink activeClassName="is-active" to="/Values">Values</NavLink></li>
           </ul>
+          <p className="menu-label">
+            Planned Services
+          </p>
+          <ul className="menu-list">
+            <li><NavLink activeClassName="is-active" to="/People">People</NavLink></li>
+            <li><NavLink activeClassName="is-active" to="/Groups">Groups</NavLink></li>
+            <li><NavLink activeClassName="is-active" to="/Interactions">Interactions</NavLink></li>
+            <li><NavLink activeClassName="is-active" to="/Issues">Issues</NavLink></li>
+            <li><NavLink activeClassName="is-active" to="/ActionItems">Action Items</NavLink></li>
+            <li><NavLink activeClassName="is-active" to="/Planning">Planning</NavLink></li>
+            <li><NavLink activeClassName="is-active" to="/Execution">Execution</NavLink></li>
+          </ul>
           </div>       
         </aside>
         {children}
       </div>
+      <aside id="statusbar">
+          (1) | (9) | (7)
+      </aside>
     </>);
   }
 

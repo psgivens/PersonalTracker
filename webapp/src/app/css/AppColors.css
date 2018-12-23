@@ -1,0 +1,58 @@
+.App-header {
+  color: #ffffffff; }
+
+#sidebar {
+  background-color: #cc9955ff; }
+
+#statusbar {
+  background: #773300ff;
+  color: #ffffffff; }
+
+.pomodoro-arc {
+  fill: #dd4433ff; }
+
+.blade-title {
+  background: #cc9955ff;
+  color: #000000ff; }
+
+.list-item {
+  border: solid 1px lightgray; }
+
+.blade {
+  border: solid 1px black; }
+
+.navbar {
+  background: #773300ff; }
+
+a.navbar-item {
+  color: #ffffffff; }
+
+a.navbar-item:hover {
+  color: #dd4433ff; }
+
+.menu-list a {
+  border-radius: 2px;
+  color: #000000ff; }
+
+.menu-list a:hover {
+  background-color: whitesmoke;
+  color: #dd4433ff; }
+
+.menu-list a.is-active {
+  background-color: #e17023ff;
+  color: #ffffffff; }
+
+.menu-list li ul {
+  border-left: 1px solid #dbdbdb; }
+
+.menu-label {
+  color: #000000;
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase; }
+
+.menu-label:not(:first-child) {
+  margin-top: 1em; }
+
+.menu-label:not(:last-child) {
+  margin-bottom: 1em; }

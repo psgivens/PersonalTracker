@@ -17,10 +17,7 @@ const MainMenu: React.SFC<ThisProps> = ({ isAuthenticated, logout } : ThisProps 
       }
     const menuItems = isAuthenticated 
         ? (<> 
-            <Link className="navbar-item" to="/">Home</Link>
             <Link className="navbar-item" to="/Pomodoros">Pomodoros</Link>
-            <Link className="navbar-item" to="/Ping">Ping</Link>
-            <Link className="navbar-item" to="/Values">Values</Link>
             <a className="navbar-item" onClick={onLogoutPressed}>Logout</a>
             </>)
         : (<> 

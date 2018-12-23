@@ -1,17 +1,17 @@
-.App {
-  text-align: center;
-}
+@import "css/AppColors.css";
+@import "css/AppLargeScreens.css";
+
+
+/* 
+ * Common to large and small layouts
+ * * Font sizes
+ * * Text alignment
+ * * Logo sizes
+ */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
 }
 
 .App-title {
@@ -27,94 +27,18 @@
   to { transform: rotate(360deg); }
 }
 
-/* li {
-  list-style-type: circle;
-  margin-left:40px;
-} */
 
-.box {
-  width: 600px;
+.blade-title {
+  padding: 5px;
 }
 
-.textValue {
-  widows: 450px;
-  word-break: break-all;
+a.navbar-link {
+  background: white;
 }
 
-#authenticated {  
-  position: absolute;
-  top: 52px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
+#statusbar {
+  padding: 5px;
 }
 
-
-#sidebar {
-  width: 300px; 
-  background-color: #bb9b7fff;
-  overflow: auto;
-  padding: 20px;
-  vertical-align: top;
-}
-
-.blade-body {
-  overflow: auto;
-}
-
-.blade-body.pomodoros {
-  position: absolute;
-  top: 25px;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
-}
-
-#root {
-  overflow: hidden;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-}
-
-
-html,body,#root { height:100%; }
-
-
-#sidebar, .blade {
-  position: absolute;
-  top: 0px;
-  bottom: 10px;
-  
-}
-
-.pomodoro-items {
-  width: 100%;
-  display: block;
-}
-
-.list-item {
-  border: solid 1px lightgray;
-  padding: 0px 5px 10px 5px;
-}
-
-.blade {
-  border: solid 1px black;  
-}
-
-.blade.listings {  
-  width: 400px;
-  left: 301px;
-}
-
-.blade.details {
-  overflow: auto;
-  left: 700px;
-  right: 0px;  
-}
-
-
-  @import "Other.css";
+@import "css/AppSmallScreens.css";
 
