@@ -15,12 +15,14 @@ import { PingSaga } from './jscommon/actions/PingSaga'
 import registerServiceWorker from './registerServiceWorker'
 
 import './index.css'
+import { CrudlDatabaseTableWorker } from './jscommon/workers/CrudlDatabaseTableWorker';
 
 const sagaMiddleware = createSagaMiddleware()
 
 const store: ReduxStore<state.All> = createStore(reducers, state.initialState, applyMiddleware(sagaMiddleware))
 const crudlDatabaseWorker = new CrudlDatabaseWorker(store.dispatch)
-const pomodoroManagementSaga = new CrudlSaga(crudlDatabaseWorker, "Pomodoros", "PomodoroManagement")
+const crudlTableWorker = new CrudlDatabaseTableWorker(crudlDatabaseWorker, "PomodoroManagement")
+const pomodoroManagementSaga = new CrudlSaga(crudlTableWorker.post, "Pomodoros")
 sagaMiddleware.run(() => pomodoroManagementSaga.saga())
 sagaMiddleware.run(createPomodoroSaga(store.dispatch))
 const pingSaga = new PingSaga()
