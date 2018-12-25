@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { BrowserRouter as Router, Route, Switch   } from "react-router-dom"
+import Login from 'src/core/components/Login'
+import PeopleManagement from 'src/core/components/PeopleManagement';
+import PomodoroManagement from 'src/core/components/PomodoroManagement';
+import ValuesComponent from 'src/core/components/ValuesComponent';
 import WebappPingComponent from 'src/core/components/WebappPing';
-import Login from '../core/components/Login';
-import PomodoroManagement from '../core/components/PomodoroManagement';
-import ValuesComponent from '../core/components/ValuesComponent';
-import Welcome from '../core/components/Welcome'
+import Welcome from 'src/core/components/Welcome'
 
 import ProtectedRoute from '../jscommon/controls/ProtectedRoute';
 
@@ -21,6 +22,7 @@ const App: React.SFC<BasicProps> = () =>
             <ProtectedRoute path="/Ping" component={ WebappPingComponent } />
             <ProtectedRoute path="/Values" component={ ValuesComponent } />
             <ProtectedRoute path="/Pomodoros" component={ PomodoroManagement } />
+            <ProtectedRoute path="/People" component={ PeopleManagement } />
             <Route path="/Home" component={ Welcome } />
             <Route path="/Login" component={ Login } />
             <Route path="/" component={ Welcome } />                      
