@@ -16,6 +16,11 @@
             "script": "start",
             "group": "none",
             "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "install",
+            "problemMatcher": []
         }
     ]
 }
