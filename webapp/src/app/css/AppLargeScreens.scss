@@ -22,6 +22,7 @@ html,body,#root { height:100%; }
 
 .box {
   width: 600px;
+  margin: 10px 10px 10px 10px;
 }
 
 #authenticated {  
@@ -64,12 +65,6 @@ html,body,#root { height:100%; }
 
 
 
-#sidebar, .blade {
-  position: absolute;
-  top: 0px;
-  bottom: 35px;  
-}
-
 #statusbar {
   position: absolute;
   bottom: 0px;
@@ -87,18 +82,36 @@ html,body,#root { height:100%; }
   padding: 0px 5px 10px 5px;
 }
 
+#sidebar, .blade {
+  position: absolute;
+  top: 0px;
+  bottom: 0px; }
+
+.appcontent {
+  position: absolute;
+  top: 0px;
+  bottom: 35px; 
+  left: 301px;
+  right: 0px;
+}
+
 
 .blade.listings {  
   width: 400px;
-  left: 301px;
+  left: 0px;
 }
 
 .blade.details {
   overflow: auto;
-  left: 700px;
+  left: 400px;
   right: 0px;  
 }
 
+.blade.full {
+  overflow: auto;
+  left: 0px;
+  right: 0px;  
+}
 
 .menu-list {
   line-height: 1.25; }

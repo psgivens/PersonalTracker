@@ -15,7 +15,8 @@ html, body, #root {
   font-size: large; }
 
 .box {
-  width: 600px; }
+  width: 600px;
+  margin: 10px 10px 10px 10px; }
 
 #authenticated {
   position: absolute;
@@ -70,26 +71,23 @@ html, body, #root {
 .appcontent {
   position: absolute;
   top: 0px;
-  bottom: 35px; 
+  bottom: 35px;
   left: 301px;
-  right: 0px;
-}
+  right: 0px; }
 
 .blade.listings {
   width: 400px;
-}
+  left: 0px; }
 
 .blade.details {
   overflow: auto;
   left: 400px;
-  right: 0px;
-}
+  right: 0px; }
 
 .blade.full {
   overflow: auto;
   left: 0px;
-  right: 0px;
-}
+  right: 0px; }
 
 .menu-list {
   line-height: 1.25; }
