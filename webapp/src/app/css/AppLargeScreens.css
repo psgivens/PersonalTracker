@@ -48,11 +48,6 @@ html, body, #root {
   left: 0px;
   right: 0px; }
 
-#sidebar, .blade {
-  position: absolute;
-  top: 0px;
-  bottom: 35px; }
-
 #statusbar {
   position: absolute;
   bottom: 0px;
@@ -67,14 +62,34 @@ html, body, #root {
 .list-item {
   padding: 0px 5px 10px 5px; }
 
+#sidebar, .blade {
+  position: absolute;
+  top: 0px;
+  bottom: 0px; }
+
+.appcontent {
+  position: absolute;
+  top: 0px;
+  bottom: 35px; 
+  left: 301px;
+  right: 0px;
+}
+
 .blade.listings {
   width: 400px;
-  left: 301px; }
+}
 
 .blade.details {
   overflow: auto;
-  left: 700px;
-  right: 0px; }
+  left: 400px;
+  right: 0px;
+}
+
+.blade.full {
+  overflow: auto;
+  left: 0px;
+  right: 0px;
+}
 
 .menu-list {
   line-height: 1.25; }

@@ -38,7 +38,9 @@ const Authenticated: React.SFC<ThisProps> = ({ children, logout } : ThisProps ) 
           </ul>
           </div>       
         </aside>
-        {children}
+        <div className="appcontent">
+          {children}
+        </div>
       </div>
       <aside id="statusbar">
           (1) | (9) | (7)
