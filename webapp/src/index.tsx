@@ -20,7 +20,11 @@ import './index.css'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const store: ReduxStore<state.All> = createStore(reducers, state.initialState, applyMiddleware(sagaMiddleware))
+
+const authenticationSaga = new AuthenticationSaga()
+const accessToken = authenticationSaga.getCookie("access_token")
+
+const store: ReduxStore<state.All> = createStore(reducers, state.initialState(accessToken), applyMiddleware(sagaMiddleware))
 const crudlDatabaseWorker = new CrudlDatabaseWorker(store.dispatch)
 const crudlTableWorker = new CrudlDatabaseTableWorker(crudlDatabaseWorker, "PomodoroManagement")
 const pomodoroManagementSaga = new CrudlSaga(crudlTableWorker.post, "Pomodoros")
@@ -32,7 +36,6 @@ sagaMiddleware.run(() => peopleManagementSaga.saga())
 
 const pingSaga = new PingSaga()
 sagaMiddleware.run(() => pingSaga.saga())
-const authenticationSaga = new AuthenticationSaga()
 sagaMiddleware.run(() => authenticationSaga.saga())
 const valuesSaga = new ValuesSaga()
 sagaMiddleware.run(() => valuesSaga.saga())
