@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 import { connectContainer } from './mainMenu/mainMenuContainer';
 import * as container from './mainMenu/mainMenuContainer'
 
@@ -11,16 +11,18 @@ type ThisProps =
 
 
 const MainMenu: React.SFC<ThisProps> = ({ isAuthenticated, logout } : ThisProps ) => {
+
+    // https://stackoverflow.com/questions/48640280/you-should-not-use-link-outside-a-router
     const onLogoutPressed = (event: React.SyntheticEvent<any>) => {
         event.preventDefault()
         logout!()
-      }
+      }    
     const menuItems = isAuthenticated 
-        ? (<> 
+        ? (<>
             <Link className="navbar-item" to="/Pomodoros">Pomodoros</Link>
-            <a className="navbar-item" onClick={onLogoutPressed}>Logout</a>
-            </>)
-        : (<> 
+            <a className="navbar-item" onClick={onLogoutPressed}>Logout</a>        
+        </>)
+        : (<>
             <Link className="navbar-item" to="/">Home</Link>
             <Link className="navbar-item" to="/Login">Login</Link>
         </>)
@@ -36,7 +38,7 @@ const MainMenu: React.SFC<ThisProps> = ({ isAuthenticated, logout } : ThisProps 
             </div>
             <div className="navbar-menu" id="my-important-menu">
                 <div className="navbar-end">
-                    {menuItems}
+                    {menuItems}                    
                 </div>
             </div>
         </nav>
