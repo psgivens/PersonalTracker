@@ -1,5 +1,19 @@
 
 
+// **Document Structure**
+// html
+// -- body
+// ---- #root
+// ------ #navbar (not sized)
+// ------ #authenticated (optional)
+// -------- #sidebar
+// -------- #appcontent
+// ---------- #blade ("blade", "blade full")
+// ------------ #blade-title
+// ------------ #blade-body
+// -------- #statusbar
+
+// TODO: Rename "authenticated" to something more appropriate
 
 html, body {
   overflow: hidden;
