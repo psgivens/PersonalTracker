@@ -17,7 +17,7 @@ $menu-hover: #dd4433ff;
 $menu-panel-bg: #cc9955ff;
 $menu-panel-fg: #000000ff;
 
-
+$action-bar-bg: #cc9955ff;
 
 .App-header {
   color: $bar-foreground;
@@ -39,6 +39,11 @@ $menu-panel-fg: #000000ff;
 
 .blade-title {
   background: $menu-panel-bg;
+  color: $menu-panel-fg;
+}
+
+.blade-actionbar {
+  background: $action-bar-bg;
   color: $menu-panel-fg;
 }
 

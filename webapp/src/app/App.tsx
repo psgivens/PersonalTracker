@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { BrowserRouter as Router, Route, Switch   } from "react-router-dom"
+import Demo from 'src/app/components/Demo'
+import BladeDemo from 'src/app/components/DemoBlade'
 import Login from 'src/core/components/Login'
 import PeopleManagement from 'src/core/components/PeopleManagement';
 import PomodoroManagement from 'src/core/components/PomodoroManagement';
@@ -25,6 +27,8 @@ const App: React.SFC<BasicProps> = () =>
             <ProtectedRoute path="/People" component={ PeopleManagement } />
             <Route path="/Home" component={ Welcome } />
             <Route path="/Login" component={ Login } />
+            <Route path="/Demo" component={ Demo } />
+            <Route path="/BladeDemo" component={ BladeDemo } />
             <Route path="/" component={ Welcome } />                      
           </Switch>
         </>
